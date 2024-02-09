@@ -1,7 +1,7 @@
 export default class Hashmap {
   #capacity = 16;
 
-  #loadFactor = 0.75;
+  #maxLoadFactor = 0.75;
 
   hash(key) {
     // A deep, deep rabbit hole...

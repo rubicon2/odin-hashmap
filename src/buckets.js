@@ -14,7 +14,7 @@ export default class Buckets {
   }
 
   get(index, key) {
-    return this.#slots[index][key];
+    return this.#slots[index][key] || null;
   }
 
   set(index, key, value) {

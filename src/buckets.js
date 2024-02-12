@@ -20,4 +20,48 @@ export default class Buckets {
   set(index, key, value) {
     this.#slots[index][key] = value;
   }
+
+  remove(index, key) {
+    if (this.get(index, key)) {
+      delete this.#slots[index][key];
+      return true;
+    }
+    // If key was not in slots
+    return false;
+  }
+
+  length() {
+    let keyCount = 0;
+    for (let i = 0; i < this.#slots.length; i += 1) {
+      keyCount += Object.keys(this.#slots[i]).length;
+    }
+    return keyCount;
+  }
+
+  entries() {
+    const allEntries = [];
+    for (let i = 0; i < this.#slots.length; i += 1) {
+      const slot = this.#slots[i];
+      allEntries.push(...Object.entries(slot));
+    }
+    return allEntries;
+  }
+
+  keys() {
+    const allKeys = [];
+    for (let i = 0; i < this.#slots.length; i += 1) {
+      const slot = this.#slots[i];
+      allKeys.push(...Object.keys(slot));
+    }
+    return allKeys;
+  }
+
+  values() {
+    const allValues = [];
+    for (let i = 0; i < this.#slots.length; i += 1) {
+      const slot = this.#slots[i];
+      allValues.push(...Object.values(slot));
+    }
+    return allValues;
+  }
 }

@@ -7,18 +7,18 @@ export default class Buckets {
     }
   }
 
-  getSlot(index) {
+  #getSlot(index) {
     if (index < 0 || index >= this.#slots.length)
       throw new Error('Trying to access index out of bounds');
     return this.#slots[index];
   }
 
   get(index, key) {
-    return this.#slots[index][key] || null;
+    return this.#getSlot(index)[key] || null;
   }
 
   set(index, key, value) {
-    this.#slots[index][key] = value;
+    this.#getSlot(index)[key] = value;
   }
 
   remove(index, key) {
